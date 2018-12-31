@@ -1,6 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 import re
+import datetime
 
 
 def display_title():
@@ -10,8 +11,8 @@ def display_title():
 
 
 def get_playlist():
-    playlist_url = input("Enter URL of playlist (omit https://): ")
-    playlist_url = "http://" + playlist_url
+    playlist_url = input("Enter URL of playlist: ")
+    playlist_url = playlist_url
     playlist_request = requests.get(playlist_url)
     return playlist_request
 
@@ -45,10 +46,9 @@ def process_times(times_list):
 
 
 def calculate_length(total_seconds):
-    num_minutes = int(total_seconds / 60)
-    num_seconds = total_seconds % 60
+    result = str(datetime.timedelta(seconds=total_seconds))
 
-    print("This playlist is {} minutes and {} seconds long".format(num_minutes, num_seconds))
+    print("Length of Playlist (H:M:S): {}".format(result))
 
 
 def main():
