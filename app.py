@@ -10,7 +10,7 @@ def display_title():
 
 
 def get_playlist():
-    playlist_url = input("Enter URL of playlist: ")
+    playlist_url = input("Enter URL of playlist (omit https://): ")
     playlist_url = "http://" + playlist_url
     playlist_request = requests.get(playlist_url)
     return playlist_request
@@ -52,11 +52,16 @@ def calculate_length(total_seconds):
 
 
 def main():
+
     display_title()
-    playlist_request = get_playlist()
-    times_list = parse_length(playlist_request)
-    num_seconds = process_times(times_list)
-    calculate_length(num_seconds)
+    while True:
+        cont = int(input("Enter 1 to continue and 0 to exit: "))
+        if cont is 0:
+            break
+        playlist_request = get_playlist()
+        times_list = parse_length(playlist_request)
+        num_seconds = process_times(times_list)
+        calculate_length(num_seconds)
 
 
 if __name__ == "__main__":
