@@ -48,7 +48,7 @@ def process_times(times_list):
 def calculate_length(total_seconds):
     result = str(datetime.timedelta(seconds=total_seconds))
 
-    print("Length of Playlist (H:M:S): {}".format(result))
+    print("Length of Playlist (H:M:S): {}\n".format(result))
 
 
 def main():
